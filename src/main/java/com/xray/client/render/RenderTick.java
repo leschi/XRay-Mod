@@ -1,5 +1,6 @@
 package com.xray.client.render;
 
+
 /* Props goto CJB for the render functions and maths.
  * http://twitter.com/CJBMods
  * I pretty much copied this from his decompiled MoreInfo mod and bitbucket repo.
@@ -15,6 +16,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
+import net.minecraft.util.text.TextComponentString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +91,8 @@ public class RenderTick
 			float f1 = 1.0f;
 			int red =  b.color[0], green =  b.color[1], blue =  b.color[2];
 
+			mc.ingameGUI.getChatGUI().printChatMessage(new TextComponentString("[BlockInfo]"+b.ore.getId()));
+			
 			tessellate.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION_COLOR);
 
 			tessellate.pos(bx-px + f, by-py + f1, bz-pz + f).color(red, green, blue, 255).endVertex();
@@ -119,6 +123,7 @@ public class RenderTick
 			tessellate.pos(bx-px + f, by-py + f1, bz-pz + f).color(red, green, blue, 255).endVertex();
 
 			tessellator.draw();
+			
 		}
 		
 		GL11.glDepthMask(true);

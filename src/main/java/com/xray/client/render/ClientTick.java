@@ -98,7 +98,8 @@ public class ClientTick implements Runnable
 						{
 							if ( (ore.draw) && (id == ore.id) && (meta == ore.meta) ) // Dont check meta if its -1 (custom)
 							{
-								temp.add( new BlockInfo( x, y, z, ore.color) ); // Add this block to the temp list
+								
+								temp.add( new BlockInfo( x, y, z, ore.color, ore) ); // Add this block to the temp list
 								break; // Found a match, move on to the next block.
 							}
 						}
